@@ -11,6 +11,7 @@ import com.learn.boot.project.service.impl.UserServiceImpl;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -29,7 +30,15 @@ public class UserController {
     @Autowired
     private UserServiceImpl userService;
 
+    @Value("${welcome.message}")
+    private String welcome;
+
     private final Logger LOGGER = LoggerFactory.getLogger(UserController.class);
+
+    @GetMapping("/welcome")
+    public String welcome(){
+        return welcome;
+    }
 
     @GetMapping("/")
     public List<User> getUsers(){

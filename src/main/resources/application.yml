@@ -1,0 +1,54 @@
+spring:
+  profiles:
+    active: dev
+
+---
+spring:
+  profiles: dev
+  datasource:
+    username: monarch5175
+    url: jdbc:postgresql://localhost:5432/test
+    password: ''
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  main:
+    banner-mode: 'off'
+welcome:
+  message: '"Custom Config Welcome | active profile - dev"'
+
+
+management:
+  endpoints:
+    server:
+      port: 8081
+    beans:
+      enabled: 'false'
+    web:
+      exposure:
+        include: '*'
+
+---
+spring:
+  profiles: prod
+  datasource:
+    username: monarch5175
+    url: jdbc:postgresql://localhost:5432/test
+    password: ''
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: 'true'
+    hibernate:
+      ddl-auto: update
+    show-sql: 'true'
+  main:
+    banner-mode: 'off'
+welcome:
+  message: '"Custom Config Welcome | active profile - prod"'
